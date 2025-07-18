@@ -1,5 +1,6 @@
 123456
 azerty
+abcd
 motdepasse
 passer1234
 admin123
