@@ -10,47 +10,40 @@ PasswordCrackerFactory est un outil modulaire de cassage de mots de passe permet
 
 ```mermaid
 classDiagram
-    interface AttackStrategy {
-        +execute(login, target)
-    }
-    class BruteForceAttack
-    class DictionaryAttack
-    AttackStrategy <|.. BruteForceAttack
-    AttackStrategy <|.. DictionaryAttack
+interface AttackStrategy
+class BruteForceAttack
+class DictionaryAttack
+AttackStrategy <|.. BruteForceAttack
+AttackStrategy <|.. DictionaryAttack
 
-    interface Target {
-        +attemptLogin(login, password)
-    }
-    class LocalTarget
-    class WebTarget
-    Target <|.. LocalTarget
-    Target <|.. WebTarget
+interface Target
+class LocalTarget
+class WebTarget
+Target <|.. LocalTarget
+Target <|.. WebTarget
 
-    class AttackFactory {
-        +createAttackStrategy()
-        +createTarget()
-    }
-    class BruteForceLocalFactory
-    class BruteForceWebFactory
-    class DictionaryLocalFactory
-    class DictionaryWebFactory
+class AttackFactory
+class BruteForceLocalFactory
+class BruteForceWebFactory
+class DictionaryLocalFactory
+class DictionaryWebFactory
 
-    AttackFactory <|-- BruteForceLocalFactory
-    AttackFactory <|-- BruteForceWebFactory
-    AttackFactory <|-- DictionaryLocalFactory
-    AttackFactory <|-- DictionaryWebFactory
+AttackFactory <|-- BruteForceLocalFactory
+AttackFactory <|-- BruteForceWebFactory
+AttackFactory <|-- DictionaryLocalFactory
+AttackFactory <|-- DictionaryWebFactory
 
-    BruteForceLocalFactory ..> BruteForceAttack
-    BruteForceLocalFactory ..> LocalTarget
-    BruteForceWebFactory ..> BruteForceAttack
-    BruteForceWebFactory ..> WebTarget
-    DictionaryLocalFactory ..> DictionaryAttack
-    DictionaryLocalFactory ..> LocalTarget
-    DictionaryWebFactory ..> DictionaryAttack
-    DictionaryWebFactory ..> WebTarget
+BruteForceLocalFactory ..> BruteForceAttack
+BruteForceLocalFactory ..> LocalTarget
+BruteForceWebFactory ..> BruteForceAttack
+BruteForceWebFactory ..> WebTarget
+DictionaryLocalFactory ..> DictionaryAttack
+DictionaryLocalFactory ..> LocalTarget
+DictionaryWebFactory ..> DictionaryAttack
+DictionaryWebFactory ..> WebTarget
 
-    class CrackerApp
-    CrackerApp ..> AttackFactory
+class CrackerApp
+CrackerApp ..> AttackFactory
 ```
 
 ---
