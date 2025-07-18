@@ -10,7 +10,6 @@ PasswordCrackerFactory est un outil modulaire de cassage de mots de passe permet
 
 ```mermaid
 classDiagram
-    direction LR
     interface AttackStrategy {
         +execute(login, target)
     }
